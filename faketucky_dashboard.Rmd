@@ -88,7 +88,27 @@ Yep - there's a relationship!
 
 It looks pretty linear, but there's a lot of noise. I wonder if there's a way to get a better idea of what's going on here...
 
+### Density plots can eliminate noisy large-n data
+```{r}
+ggplot(ft_data, aes(x = avg_gpa_hs, scale_score_11_math))+
+  stat_density2d(aes(fill = ..level..,
+                     alpha = ..level..),
+                 size = 2, bins = 4,
+                 geom = "polygon")+
+  geom_smooth(se = FALSE)+
+  geom_hline(yintercept = 19, color = "goldenrod4")+
+  theme_bw()+
+  theme(legend.position = "none",
+        text = element_text(size = 10))
 
+```
+
+***
+
+Woah! This paints a different picture than using `geom_point()` to plot the data. Turns out getting a really good GPA is a pretty darn good indication you're going to meet the KYCPE math benchmark!
+
+
+ 
 ### Density of GPA & Math ACT score with a GLA regression
 
 ```{r}
@@ -107,8 +127,6 @@ ggplot(ft_data, aes(x = avg_gpa_hs, scale_score_11_math))+
 ```
 
 ***
-
-Turns out getting a really good GPA is a pretty darn good indication you're going to meet the KYCPE math benchmark!
 
 Maybe there isn't grade inflation in `City: Small` or `Town: Fringe`. They could have:
 

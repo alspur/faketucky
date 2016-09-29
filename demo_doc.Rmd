@@ -30,8 +30,8 @@ summary(mtcars)
 You can also embed plots, for example:
 
 ```{r, echo=FALSE}
-ggplot(mtcars, aes(x = hp, y = qsec))+
-  geom_point()
+ggplot(mtcars, aes(x = cyl, y = hp))+
+  geom_jitter(width = .2)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
