@@ -88,7 +88,7 @@ Yep - there's a relationship!
 
 It looks pretty linear, but there's a lot of noise. I wonder if there's a way to get a better idea of what's going on here...
 
-### Density plots can eliminate noisy large-n data
+### Density plots & a GAM can eliminate noisy large-n data
 ```{r}
 ggplot(ft_data, aes(x = avg_gpa_hs, scale_score_11_math))+
   stat_density2d(aes(fill = ..level..,
@@ -109,7 +109,7 @@ Woah! This paints a different picture than using `geom_point()` to plot the data
 
 
  
-### Density of GPA & Math ACT score with a GLA regression
+### Density of GPA & Math ACT score with a GAM regression
 
 ```{r}
 ggplot(ft_data, aes(x = avg_gpa_hs, scale_score_11_math))+
